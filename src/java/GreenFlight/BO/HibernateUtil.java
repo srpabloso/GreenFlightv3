@@ -11,6 +11,7 @@ import org.hibernate.cfg.*;
 
 public class HibernateUtil {
     
+    
     private static final HibernateUtil instance = new HibernateUtil();
  
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("GreenFlightv2PU");
