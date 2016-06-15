@@ -23,7 +23,7 @@ public class CadastroBean implements Serializable {
         _Cliente = new ClienteVO();
     }
     
-    public String cadastrarCliente()
+    public void cadastrarCliente()
     {
         try {
             if (validarCampos())
@@ -33,18 +33,10 @@ public class CadastroBean implements Serializable {
                 LoginBean b = new LoginBean();
                 b.setUsuario(_Cliente);
                 b.envia();
-                _Cliente = new ClienteVO();
-                _DataNascimento = null;
-                _ConfirmacaoSenha = null;
-                _Senha = null;
-                _Erro = null;
-                
-                return "/index";
             }
         } catch (Exception e) {
             
         }
-        return null;
     }
     
     public Boolean validarCampos()
@@ -74,6 +66,13 @@ public class CadastroBean implements Serializable {
                 _Erro = "Todos campos são obrigatórios";
                 return false;
             }
+            ClienteDAO dao = new ClienteDAO();
+            if (dao.loginExiste(_Cliente.getLogin()))
+            {
+                _Erro = "Login já existe";
+                return false;
+            }
+            
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             _Cliente.setDataNascimento(sdf.parse(_DataNascimento));
             

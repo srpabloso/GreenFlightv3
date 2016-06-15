@@ -1,5 +1,8 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -9,9 +12,8 @@
     <h:head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>
-            GreenFlight
+            GreenFlight - Login
         </title>
-
         <h:outputStylesheet library="css" name="bootstrap.min.css"/>
         <h:outputStylesheet library="css" name="style.css"/>
         <h:outputStylesheet library="css" name="jquery-ui.min.css"/>
@@ -19,100 +21,126 @@
         <h:outputScript library="script" name="jquery-ui.min.js" target="head"/>
         <h:outputScript library="script" name="bootstrap.min.js" target="head"/>
         <h:outputScript library="script" name="scripts.js" target="head"/>
-
-        </h:head>
-        <h:body>
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-4">
-
-                    </div>
-                    <div class="col-md-4">
-                        <a href="index.html"><img src="img/logo2.png"/></a></div>
-                    <div class="col-md-4">
-                        <ul class="nav navbar-nav navbar-right">
-                           
-                            <li > <a href="cadastro.html"><img src="img/cuser2.png"> </img>Crie uma Conta </a>
+    </h:head>
+    <h:body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <h:form>
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <h:commandLink action="#{indexBean.dataViagem}" >
+                                    <h:graphicImage library="images" name="cont.png" />&nbsp;Fale Conosco
+                                </h:commandLink>
                             </li>	
-
-
+                            <li>
+                                &nbsp;&nbsp;&nbsp;
+                            </li>
                         </ul>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-
-
-
-
-
+                    </h:form>
+                </div>
+                <div class="col-md-4">
+                    <h:form>
+                        <h:commandLink action="#{indexBean.navegarParaHome()}" >
+                            <h:graphicImage library="images" name="logo2.png" />
+                        </h:commandLink>
+                    </h:form>
+                </div>
+                <div class="col-md-4">
+                    <h:form>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <h:commandLink action="#{indexBean.navegarParaLogin()}" >
+                                    <h:graphicImage library="images" name="user2.png" />&nbsp;Minha Conta
+                                </h:commandLink>
+                            </li>
+                            <li> 
+                                <h:commandLink action="#{indexBean.navegarParaCadastro()}" >
+                                    <h:graphicImage library="images" name="cuser2.png" />&nbsp;Crie uma Conta 
+                                </h:commandLink>
+                            </li>	
+                            <li>
+                                &nbsp;&nbsp;&nbsp;
+                            </li>
+                        </ul>
+                    </h:form>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h:form>
                             <nav class="navbar navbar-default navbar-static-top" role="navigation">
-                                <div class="navbar-header">
 
-                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                        <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                                    </button><a class="navbar-brand" href="index.html">Home</a>
-
-                                </div>
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                                     <ul class="nav navbar-nav">
                                         <li>
-                                            <a class="navbar-brand" href="#">Ofertas</a>
+                                            <h:commandLink class="navbar-brand" action="#{indexBean.navegarParaHome()}" >
+                                                Home
+                                            </h:commandLink>
                                         </li>
                                         <li>
-                                            <a class="navbar-brand" href="#">Quem somos nós</a>
+                                            <h:commandLink class="navbar-brand" action="#{indexBean.dataViagem}" >
+                                                Ofertas
+                                            </h:commandLink>
                                         </li>
                                         <li>
-                                            <a class="navbar-brand" href="#">Contatos</a>
+                                            <h:commandLink class="navbar-brand" action="#{indexBean.dataViagem}" >
+                                                Quem somos nós
+                                            </h:commandLink>
+                                        </li>
+                                        <li>
+                                            <h:commandLink class="navbar-brand" action="#{indexBean.dataViagem}" >
+                                                Contatos
+                                            </h:commandLink>
                                         </li>
                                     </ul>
-
-
                                 </div>
-
                             </nav>
-                            <div class="row">
-                                <div class="col-md-offset-1 col-md-4">
-                                    <h:form id="formLogin" enctype="multipart/form-data">
-                                        <div>&nbsp;</div>
-                                        <div class="form-group">
-                                            
-                                           <h:outputLabel for="nomeUsuario" value="Login:" />
-                                           <h:inputText id="nomeUsuario"  value="#{loginBean.usuario.login}"/>
+                        </h:form>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-4">
+                                <h:form id="formLogin" enctype="multipart/form-data">
+                                    <div>&nbsp;</div>
+                                    <div class="form-group">
 
+                                        <h:outputLabel for="nomeUsuario" value="Login:" />
+                                        <h:inputText id="nomeUsuario"  value="#{loginBean.usuario.login}"/>
+
+                                    </div>
+                                    <div class="form-group">
+
+                                        <h:outputLabel for="senha" value="Senha:"  />
+                                        <h:inputSecret id="senha" value="#{loginBean.usuario.senha}"/>                   
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+
+                                            <h:commandButton id="btnEnviar" action="#{loginBean.envia}" value="Login"/>
                                         </div>
-                                        <div class="form-group">
+                                    </div>
+                                </h:form>
 
-                                            <h:outputLabel for="senha" value="Senha:"  />
-                                           <h:inputSecret id="senha" value="#{loginBean.usuario.senha}"/>                   
-                                        </div>
 
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-2 col-sm-10">
-
-                                                <h:commandButton id="btnEnviar" action="#{loginBean.envia}" value="Login"/>
-                                            </div>
-                                        </div>
-                                        </h:form>
-                                    
-
-                                </div>
-                                <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                                <h:form>
                                     <ul class="nav navbar-nav navbar-right">
 
-                                        <li ><a href="cadastro.html">Não tem uma conta? Crie Aqui&nbsp;&nbsp;  <img src="img/cuser.png"></img>&nbsp;</a>
+                                        <li >
+                                            <h:commandLink action="#{indexBean.navegarParaCadastro()}" >Não tem uma conta? Crie Aqui&nbsp;&nbsp;  
+                                                <h:graphicImage library="images" name="cuser.png" />&nbsp; 
+                                            </h:commandLink>
                                         </li>	
-
-
                                     </ul>
-                                </div> 
-                            </div>
-                           
+                                </h:form>
+                            </div> 
                         </div>
+
                     </div>
                 </div>
-                </div>
+            </div>
+        </div>
 
-        </h:body>
+    </h:body>
 </html>

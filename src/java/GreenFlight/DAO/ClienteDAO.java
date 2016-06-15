@@ -84,4 +84,17 @@ public class ClienteDAO extends BaseDAO{
     {
         return buscar(cpf) != null;
     }
+    
+    public Boolean loginExiste(String login)
+    {
+        for (ClienteVO c : listar())
+        {
+            if (c.getLogin().equals(c.getLogin()))
+            {
+                return true;
+            }
+            
+        }
+        return false;
+    }
 }

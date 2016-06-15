@@ -24,7 +24,6 @@ public class ClienteVO {
     private Date _DataNascimento;
     @Column
     private String _Email;
-
     public ClienteVO()
     {}
     
