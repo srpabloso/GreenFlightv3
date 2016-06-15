@@ -6,11 +6,9 @@
 package GreenFlight.Bean;
 
 import javax.inject.Named;
-import javax.faces.view.ViewScoped;
 import GreenFlight.DAO.ClienteDAO;
 import GreenFlight.VO.ClienteVO;
 import java.io.Serializable;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -38,7 +36,7 @@ private ClienteDAO usuarioDAO = new ClienteDAO();
                                            "Erro no Login!"));
                     return null;
               } else {
-                    return "/main";
+                    return "/index";
               }
             }
             catch(Exception ex)

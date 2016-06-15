@@ -1,12 +1,173 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <h:outputStylesheet library="css" name="style.css"/>
+        <h:outputScript library="script" name="jquery-3.0.0.js" target="head"/>
+        <h:outputScript library="script" name="bootstrap.min.js" target="head"/>
+        <h:outputScript library="script" name="scripts.js" target="head"/>
     </h:head>
     <h:body>
-        Pagina cadastro
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <h:form>
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <h:commandLink action="#{indexBean.dataViagem}" >
+                                    <h:graphicImage library="images" name="cont.png" />&nbsp;Fale Conosco
+                                </h:commandLink>
+                            </li>	
+                            <li>
+                                &nbsp;&nbsp;&nbsp;
+                            </li>
+                        </ul>
+                    </h:form>
+                </div>
+                <div class="col-md-4">
+                    <h:form>
+                        <h:commandLink action="#{indexBean.navegarParaHome()}" >
+                            <h:graphicImage library="images" name="logo2.png" />
+                        </h:commandLink>
+                    </h:form>
+                </div>
+                <div class="col-md-4">
+                    <h:form>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <h:commandLink action="#{indexBean.navegarParaLogin()}" >
+                                    <h:graphicImage library="images" name="user2.png" />&nbsp;Minha Conta
+                                </h:commandLink>
+                            </li>
+                            <li> 
+                                <h:commandLink action="#{indexBean.navegarParaCadastro()}" >
+                                    <h:graphicImage library="images" name="cuser2.png" />&nbsp;Crie uma Conta 
+                                </h:commandLink>
+                            </li>	
+                            <li>
+                                &nbsp;&nbsp;&nbsp;
+                            </li>
+                        </ul>
+                    </h:form>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h:form>
+                            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                                    <ul class="nav navbar-nav">
+                                        <li>
+                                            <h:commandLink class="navbar-brand" action="#{indexBean.navegarParaHome()}" >
+                                                Home
+                                            </h:commandLink>
+                                        </li>
+                                        <li>
+                                            <h:commandLink class="navbar-brand" action="#{indexBean.dataViagem}" >
+                                                Ofertas
+                                            </h:commandLink>
+                                        </li>
+                                        <li>
+                                            <h:commandLink class="navbar-brand" action="#{indexBean.dataViagem}" >
+                                                Quem somos nós
+                                            </h:commandLink>
+                                        </li>
+                                        <li>
+                                            <h:commandLink class="navbar-brand" action="#{indexBean.dataViagem}" >
+                                                Contatos
+                                            </h:commandLink>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </h:form>
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-10">
+                                <h:form class="form-horizontal" role="form">
+                                    <div>&nbsp;</div>
+
+                                    <div class="form-group">
+
+                                        <label for="inputEmail3" class="col-sm-2 control-label">
+                                            Nome
+                                        </label>
+                                        <div class="col-sm-10 col-md-7">
+                                            <h:inputText p:placeholder="Nome Completo" class="form-control" value="#{cadastroBean.cliente.nome}" />
+                                        </div>
+
+                                    </div>
+                                    
+                                    <div class="form-group">
+
+                                        <label for="inputEmail3" class="col-sm-2 control-label">
+                                            CPF
+                                        </label>
+                                        <div class="col-sm-10 col-md-4">
+                                            <h:inputText p:placeholder="CPF" class="form-control" value="#{cadastroBean.cliente.CPF}" />
+                                        </div>
+
+                                    </div>
+                                    
+                                    <div class="form-group">
+
+                                        <label for="inputPassword3" class="col-sm-2 control-label">
+                                            Data de nascimento
+                                        </label>
+                                        <div class="col-sm-10 col-md-4">
+                                            <h:inputText p:placeholder="Data de nascimento" class="form-control" value="#{cadastroBean.dataNascimento}" />
+
+                                        </div>                          
+                                    </div>
+                                    
+                                    <div class="form-group">
+
+                                        <label for="inputEmail3" class="col-sm-2 control-label">
+                                            Login
+                                        </label>
+                                        <div class="col-sm-10 col-md-4">
+                                            <h:inputText p:placeholder="Login " class="form-control" value="#{cadastroBean.cliente.login}" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label">
+                                            Senha
+                                        </label>
+                                        <div class="col-sm-10 col-md-4">
+                                            <h:inputSecret p:placeholder="Senha" class="form-control" value="#{cadastroBean.senha}" />
+                                        </div>                          
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label">
+                                            Confirme sua Senha
+                                        </label>
+                                        <div class="col-sm-10 col-md-4">
+                                            <h:inputSecret p:placeholder="Confirmação de senha" class="form-control" value="#{cadastroBean.confirmacaoSenha}" />
+                                        </div>                          
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <h:commandButton value="Cadastrar" class="btn btn-default" action="#{cadastroBean.cadastrarCliente()}"/>
+
+                                        </div>
+                                    </div>
+                                    <h:outputText value="#{cadastroBean.erro}" />
+                                </h:form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </h:body>
 </html>
 
