@@ -70,6 +70,16 @@ public class ClienteDAO extends BaseDAO{
         }
     }
     
+    public ClienteVO validar(String login, String senha)
+    {
+        for (ClienteVO c : listar())
+        {
+            if (c.getLogin().equals(login) && c.getSenha().equals(senha))
+                return c;
+        }
+        return null;
+    }
+    
     private Boolean clienteExiste(String cpf)
     {
         return buscar(cpf) != null;

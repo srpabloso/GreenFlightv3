@@ -9,6 +9,9 @@ import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import GreenFlight.DAO.ClienteDAO;
 import GreenFlight.VO.ClienteVO;
+import java.io.Serializable;
+import javax.enterprise.context.Dependent;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -17,15 +20,16 @@ import javax.faces.context.FacesContext;
  * @author Administrador
  */
 @Named(value = "loginBean")
-@ViewScoped
-public class LoginBean {
+@SessionScoped
+public class LoginBean implements Serializable {
 private ClienteDAO usuarioDAO = new ClienteDAO();
         private ClienteVO usuario = new ClienteVO();
         
         public String envia() {
               
-              //usuario = usuarioDAO.buscar(usuario.getLogin(), usuario.getSenha());
-              usuario = usuarioDAO.buscar(usuario.getLogin());
+            try{
+              usuario = usuarioDAO.validar(usuario.getLogin(), usuario.getSenha());
+              //usuario = usuarioDAO.buscar(usuario.getLogin());
               if (usuario == null) {
                     usuario = new ClienteVO();
                     FacesContext.getCurrentInstance().addMessage(
@@ -36,7 +40,20 @@ private ClienteDAO usuarioDAO = new ClienteDAO();
               } else {
                     return "/main";
               }
-              
-              
+            }
+            catch(Exception ex)
+            {
+               
+            }
+              return null;
+        }
+        
+        public ClienteVO getUsuario()
+        {
+            return usuario;
+        }
+        public void setUsuario(ClienteVO client)
+        {
+            usuario = client;
         }
 }

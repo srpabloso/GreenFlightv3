@@ -74,29 +74,28 @@
                             </nav>
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-4">
-                                    <form class="form-horizontal" role="form">
+                                    <h:form id="formLogin" enctype="multipart/form-data">
                                         <div>&nbsp;</div>
                                         <div class="form-group">
-
-                                           <p:outputLabel for="nomeUsuario" value="Login:" />
-                                           <p:inputText id="nomeUsuario" value="#{LoginMB.usuario.nomeUsuario}" />
+                                            
+                                           <h:outputLabel for="nomeUsuario" value="Login:" />
+                                           <h:inputText id="nomeUsuario"  value="#{loginBean.usuario.login}"/>
 
                                         </div>
                                         <div class="form-group">
 
-                                           <p:outputLabel for="senha" value="Senha:" />
-                                           <p:password id="senha" value="#{LoginMB.usuario.senha}" />                   
+                                            <h:outputLabel for="senha" value="Senha:"  />
+                                           <h:inputSecret id="senha" value="#{loginBean.usuario.senha}"/>                   
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
 
-                                                <h:button onclick=""
-                                                    Entrar
-                                                </button>
+                                                <h:commandButton id="btnEnviar" action="#{loginBean.envia}" value="Login"/>
                                             </div>
                                         </div>
-                                    </form>
+                                        </h:form>
+                                    
 
                                 </div>
                                 <div class="col-md-4">

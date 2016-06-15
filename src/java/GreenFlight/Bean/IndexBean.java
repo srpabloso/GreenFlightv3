@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.enterprise.context.Dependent;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.persistence.Convert;
