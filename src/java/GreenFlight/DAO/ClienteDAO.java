@@ -89,7 +89,7 @@ public class ClienteDAO extends BaseDAO{
     {
         for (ClienteVO c : listar())
         {
-            if (c.getLogin().equals(c.getLogin()))
+            if (c.getLogin().equals(login))
             {
                 return true;
             }

@@ -18,25 +18,25 @@ public class CadastroBean implements Serializable {
     private String _ConfirmacaoSenha;
     private String _DataNascimento;
     private String _Erro;
+    private Boolean _Cadastrado = false;
     
     public CadastroBean() {
         _Cliente = new ClienteVO();
     }
     
-    public void cadastrarCliente()
+    public String cadastrarCliente()
     {
         try {
             if (validarCampos())
             {
                 ClienteDAO dao = new ClienteDAO();
                 dao.salvar(_Cliente);
-                LoginBean b = new LoginBean();
-                b.setUsuario(_Cliente);
-                b.envia();
+                return "/login";
             }
         } catch (Exception e) {
             
         }
+        return null;
     }
     
     public Boolean validarCampos()
@@ -122,4 +122,14 @@ public class CadastroBean implements Serializable {
     public void setErro(String _Erro) {
         this._Erro = _Erro;
     }
+
+    public Boolean getCadastrado() {
+        return _Cadastrado;
+    }
+
+    public void setCadastrado(Boolean _Cadastrado) {
+        this._Cadastrado = _Cadastrado;
+    }
+    
+    
 }

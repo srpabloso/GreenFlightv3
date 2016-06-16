@@ -54,4 +54,9 @@ private ClienteDAO usuarioDAO = new ClienteDAO();
         {
             usuario = client;
         }
+        
+        public Boolean autenticado()
+        {
+            return usuario.getCPF() != null;
+        }
 }

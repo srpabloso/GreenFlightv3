@@ -137,6 +137,9 @@
                                         </div>
                                     </div>
                                     <h:outputText value="#{indexBean.erro}" />
+                                    <c:if test="#{loginBean.autenticado()}" >
+                                        <h:outputText value="#{loginBean.usuario.nome}" />
+                                    </c:if>
                                 </h:form>
                             </div>
                             <div class="col-md-4">
