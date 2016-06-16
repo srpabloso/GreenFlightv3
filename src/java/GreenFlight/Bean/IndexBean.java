@@ -148,15 +148,35 @@ public class IndexBean implements Serializable {
             _ResultadoBanco = "Falha";
     }
     
-    public void listarVoos()
+    
+    public String listarVoos()
     {
         try {
             VooDAO dao = new VooDAO();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             validaSelecaoDeEstados();
-            excluirVoo(2);
-            salvarVoo("GRU", "GIG", "14/06/2016");
+            //excluirVoo(2);
+            //salvarVoo("GRU", "GIG", "14/06/2016");
+            //para teste linhas abaixo
+            //VooVO voo = new VooVO();
+            //AeroportoVO ad = new AeroportoVO();
+            //ad.setEstado("SP");
+            //AeroportoVO ao = new AeroportoVO();
+            //ad.setEstado("RJ");
+            //voo.setAeroportoDestino(ad);
+            //voo.setAeroportoOrigem(ao);
+            //voo.setDataViagem(new Date());
+            
             List<VooVO> voos = dao.filtrar(sdf.parse(getDataViagem()), getEstadoOrigem(), getEstadoDestino());
+            //voos.add(voo);
+            //fim do teste
+            if(voos.isEmpty())
+            {
+                 return "/comprar?destino=" + voos.get(0).getAeroportoDestino() + 
+                         "&origem=" + voos.get(0).getAeroportoOrigem() +
+                         "&Data" + voos.get(0).getDataViagem();
+                        
+            }
             _Erro = "";
             //Chama a tela de listar voos
         } catch (ParseException e) {
@@ -164,6 +184,7 @@ public class IndexBean implements Serializable {
         } catch (Exception e) {
             _Erro = "Estado origem e destino precisam ser diferentes";
         }
+        return null;
     }
     
     private void validaSelecaoDeEstados() throws Exception
