@@ -49,16 +49,30 @@
                 <div class="col-md-4">
                     <h:form>
                         <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <h:commandLink action="#{indexBean.navegarParaLogin()}" >
-                                    <h:graphicImage library="images" name="user2.png" />&nbsp;Minha Conta
-                                </h:commandLink>
-                            </li>
-                            <li> 
-                                <h:commandLink action="#{indexBean.navegarParaCadastro()}" >
-                                    <h:graphicImage library="images" name="cuser2.png" />&nbsp;Crie uma Conta 
-                                </h:commandLink>
-                            </li>	
+                            <c:choose>
+                                <c:when test="#{loginBean.autenticado()}" >
+                                    <li>
+                                        <h:commandLink action="#{indexBean.navegarParaListagem()}" >
+                                            <h:graphicImage library="images" name="user2.png" />&nbsp;Minhas passagens
+                                        </h:commandLink>
+                                    </li>
+                                    <li>
+                                        Bem vindo,&nbsp;<h:outputText value="#{loginBean.usuario.nome}" />
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li>
+                                        <h:commandLink action="#{indexBean.navegarParaLogin()}" >
+                                            <h:graphicImage library="images" name="user2.png" />&nbsp;Minha Conta
+                                        </h:commandLink>
+                                    </li>
+                                    <li>
+                                        <h:commandLink action="#{indexBean.navegarParaCadastro()}" >
+                                            <h:graphicImage library="images" name="cuser2.png" />&nbsp;Crie uma Conta 
+                                        </h:commandLink>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
                             <li>
                                 &nbsp;&nbsp;&nbsp;
                             </li>
@@ -137,9 +151,7 @@
                                         </div>
                                     </div>
                                     <h:outputText value="#{indexBean.erro}" />
-                                    <c:if test="#{loginBean.autenticado()}" >
-                                        <h:outputText value="#{loginBean.usuario.nome}" />
-                                    </c:if>
+                                    
                                 </h:form>
                             </div>
                             <div class="col-md-4">

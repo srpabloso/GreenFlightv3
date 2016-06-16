@@ -201,6 +201,11 @@ public class IndexBean implements Serializable {
         return "cadastro";
     }
     
+    public String navegarParaListagem()
+    {
+        return "listagem";
+    }
+    
     public String navegarParaLogin()
     {
         return "login";
